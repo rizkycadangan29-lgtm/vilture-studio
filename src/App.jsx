@@ -21,6 +21,49 @@ function App() {
     };
   }, []);
 
+  const toolkit = [
+  {
+    name: "AutoCAD",
+    icon: "https://cdn.simpleicons.org/autocad/ffffff",
+  },
+  {
+    name: "SketchUp",
+    icon: "https://cdn.simpleicons.org/sketchup/ffffff",
+  },
+  {
+    name: "Revit",
+    icon: "https://cdn.simpleicons.org/autodeskrevit/ffffff",
+  },
+  {
+    name: "GitHub",
+    icon: "https://cdn.simpleicons.org/github/ffffff",
+  },
+  {
+    name: "Claude",
+    icon: "https://cdn.simpleicons.org/claude/ffffff",
+  },
+  {
+    name: "Blender",
+    icon: "https://cdn.simpleicons.org/blender/ffffff",
+  },
+  {
+    name: "Figma",
+    icon: "https://cdn.simpleicons.org/figma/ffffff",
+  },
+  {
+    name: "Git",
+    icon: "https://cdn.simpleicons.org/git/ffffff",
+  },
+  {
+    name: "Python",
+    icon: "https://cdn.simpleicons.org/python/ffffff",
+  },
+  {
+    name: "Linux",
+    icon: "https://cdn.simpleicons.org/linux/ffffff",
+  },
+];
+
   return (
     <main
       className="studio-page"
@@ -113,123 +156,51 @@ function App() {
       </section>
 
       {/* DIGITAL TOOLKIT */}
-<section className="toolkit-section">
-  <div className="toolkit-header">
-    <span className="section-number">/ DIGITAL TOOLKIT</span>
+      <section className="toolkit-section">
+        <div className="toolkit-header">
+          <span className="section-number">/ DIGITAL TOOLKIT</span>
 
-    <p>
-      The tools and software behind our digital work.
-    </p>
-  </div>
-
-  <div className="toolkit-marquee">
-    <div className="toolkit-track">
-      {[
-        {
-          name: "Blender",
-          icon: "https://cdn.simpleicons.org/blender/ffffff",
-        },
-        {
-          name: "AutoCAD",
-          icon: "https://cdn.simpleicons.org/autocad/ffffff",
-        },
-        {
-          name: "Revit",
-          icon: "https://cdn.simpleicons.org/autodesk/ffffff",
-        },
-        {
-          name: "Rhino",
-          icon: "https://cdn.simpleicons.org/rhinoceros/ffffff",
-        },
-        {
-          name: "SketchUp",
-          icon: "https://cdn.simpleicons.org/sketchup/ffffff",
-        },
-        {
-          name: "Photoshop",
-          icon: "https://cdn.simpleicons.org/adobephotoshop/ffffff",
-        },
-        {
-          name: "Illustrator",
-          icon: "https://cdn.simpleicons.org/adobeillustrator/ffffff",
-        },
-        {
-          name: "Figma",
-          icon: "https://cdn.simpleicons.org/figma/ffffff",
-        },
-        {
-          name: "After Effects",
-          icon: "https://cdn.simpleicons.org/adobeaftereffects/ffffff",
-        },
-        {
-          name: "Premiere Pro",
-          icon: "https://cdn.simpleicons.org/adobepremierepro/ffffff",
-        },
-      ].map((tool, index) => (
-        <div className="toolkit-card" key={`${tool.name}-${index}`}>
-          <img
-            src={tool.icon}
-            alt={tool.name}
-          />
-
-          <span>{tool.name}</span>
+          <p>
+            The tools and software behind our digital work.
+          </p>
         </div>
-      ))}
 
-      {[
-        {
-          name: "Blender",
-          icon: "https://cdn.simpleicons.org/blender/ffffff",
-        },
-        {
-          name: "AutoCAD",
-          icon: "https://cdn.simpleicons.org/autocad/ffffff",
-        },
-        {
-          name: "Revit",
-          icon: "https://cdn.simpleicons.org/autodesk/ffffff",
-        },
-        {
-          name: "Rhino",
-          icon: "https://cdn.simpleicons.org/rhinoceros/ffffff",
-        },
-        {
-          name: "SketchUp",
-          icon: "https://cdn.simpleicons.org/sketchup/ffffff",
-        },
-        {
-          name: "Photoshop",
-          icon: "https://cdn.simpleicons.org/adobephotoshop/ffffff",
-        },
-        {
-          name: "Illustrator",
-          icon: "https://cdn.simpleicons.org/adobeillustrator/ffffff",
-        },
-        {
-          name: "Figma",
-          icon: "https://cdn.simpleicons.org/figma/ffffff",
-        },
-        {
-          name: "After Effects",
-          icon: "https://cdn.simpleicons.org/adobeaftereffects/ffffff",
-        },
-        {
-          name: "Premiere Pro",
-          icon: "https://cdn.simpleicons.org/adobepremierepro/ffffff",
-        },
-      ].map((tool, index) => (
-        <div className="toolkit-card" key={`duplicate-${tool.name}-${index}`}>
-          <img
-            src={tool.icon}
-            alt={tool.name}
-          />
+        <div className="toolkit-marquee">
+          <div className="toolkit-track">
 
-          <span>{tool.name}</span>
+            {/* FIRST SET */}
+            {toolkit.map((tool, index) => (
+              <div
+                className="toolkit-card"
+                key={`${tool.name}-${index}`}
+              >
+                <img
+                  src={tool.icon}
+                  alt={tool.name}
+                />
+
+                <span>{tool.name}</span>
+              </div>
+            ))}
+
+            {/* DUPLICATE SET FOR SEAMLESS MARQUEE */}
+            {toolkit.map((tool, index) => (
+              <div
+                className="toolkit-card"
+                key={`duplicate-${tool.name}-${index}`}
+              >
+                <img
+                  src={tool.icon}
+                  alt={tool.name}
+                />
+
+                <span>{tool.name}</span>
+              </div>
+            ))}
+
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* WORK */}
       <section id="work" className="intro-section">
@@ -290,7 +261,10 @@ function App() {
           <em>in mind?</em>
         </h2>
 
-        <a href="mailto:hello@studio.com" className="contact-button">
+        <a
+          href="mailto:hello@studio.com"
+          className="contact-button"
+        >
           Start a conversation
           <ArrowUpRight size={20} />
         </a>
