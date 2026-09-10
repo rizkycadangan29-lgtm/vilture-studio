@@ -24,43 +24,43 @@ function App() {
   const toolkit = [
   {
     name: "AutoCAD",
-    icon: "https://cdn.simpleicons.org/autocad/ffffff",
+    icon: "/icons/autocad.svg",
   },
   {
     name: "SketchUp",
-    icon: "https://cdn.simpleicons.org/sketchup/ffffff",
+    icon: "/icons/sketchup.svg",
   },
   {
     name: "Revit",
-    icon: "https://cdn.simpleicons.org/autodeskrevit/ffffff",
+    icon: "/icons/revit.svg",
   },
   {
     name: "GitHub",
-    icon: "https://cdn.simpleicons.org/github/ffffff",
+    icon: "/icons/github.svg",
   },
   {
     name: "Claude",
-    icon: "https://cdn.simpleicons.org/claude/ffffff",
+    icon: "/icons/claude.svg",
   },
   {
     name: "Blender",
-    icon: "https://cdn.simpleicons.org/blender/ffffff",
+    icon: "/icons/blender.svg",
   },
   {
     name: "Figma",
-    icon: "https://cdn.simpleicons.org/figma/ffffff",
+    icon: "/icons/figma.svg",
   },
   {
     name: "Git",
-    icon: "https://cdn.simpleicons.org/git/ffffff",
+    icon: "/icons/git.svg",
   },
   {
     name: "Python",
-    icon: "https://cdn.simpleicons.org/python/ffffff",
+    icon: "/icons/python.svg",
   },
   {
     name: "Linux",
-    icon: "https://cdn.simpleicons.org/linux/ffffff",
+    icon: "/icons/linux.svg",
   },
 ];
 
