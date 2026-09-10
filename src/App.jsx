@@ -8,9 +8,9 @@ import {
   siClaude,
   siBlender,
   siFigma,
-  siGit,
+  siFramer,
   siPython,
-  siLinux,
+  siReplit,
 } from "simple-icons";
 import "./App.css";
 
@@ -79,16 +79,16 @@ function App() {
       icon: siFigma,
     },
     {
-      name: "Git",
-      icon: siGit,
+      name: "Framer",
+      icon: siFramer,
     },
     {
       name: "Python",
       icon: siPython,
     },
     {
-      name: "Linux",
-      icon: siLinux,
+      name: "Replit",
+      icon: siReplit,
     },
   ];
 

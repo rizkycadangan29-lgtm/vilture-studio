@@ -1155,20 +1155,23 @@ footer {
 
   overflow: hidden;
 
-  /* Fade kiri dan kanan */
+  padding: 10px 0;
+
+  box-sizing: border-box;
+
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 7%,
-    black 93%,
+    black 3%,
+    black 97%,
     transparent 100%
   );
 
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 7%,
-    black 93%,
+    black 3%,
+    black 97%,
     transparent 100%
   );
 }
@@ -1179,6 +1182,8 @@ footer {
   width: max-content;
 
   gap: 18px;
+
+  padding: 7px 0;
 
   animation: toolkitScroll 35s linear infinite;
 
