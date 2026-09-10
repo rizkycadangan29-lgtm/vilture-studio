@@ -1389,5 +1389,33 @@ footer {
   opacity: 1;
 }
 
+.toolkit-icon {
+  position: relative;
 
+  z-index: 2;
 
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s ease;
+}
+
+.toolkit-icon svg {
+  width: 42px;
+  height: 42px;
+
+  display: block;
+}
+
+.toolkit-card:hover .toolkit-icon {
+  color: #70ddd5;
+  transform: scale(1.12);
+}

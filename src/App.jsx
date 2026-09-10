@@ -1,6 +1,34 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import {
+  siAutocad,
+  siSketchup,
+  siAutodeskrevit,
+  siGithub,
+  siClaude,
+  siBlender,
+  siFigma,
+  siGit,
+  siPython,
+  siLinux,
+} from "simple-icons";
 import "./App.css";
+
+function ToolkitIcon({ icon, name }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      role="img"
+      aria-label={name}
+      xmlns="http://www.w3.org/2000/svg"
+      width="42"
+      height="42"
+      fill="currentColor"
+    >
+      <path d={icon.path} />
+    </svg>
+  );
+}
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,47 +50,47 @@ function App() {
   }, []);
 
   const toolkit = [
-  {
-    name: "AutoCAD",
-    icon: "/icons/autocad.svg",
-  },
-  {
-    name: "SketchUp",
-    icon: "/icons/sketchup.svg",
-  },
-  {
-    name: "Revit",
-    icon: "/icons/revit.svg",
-  },
-  {
-    name: "GitHub",
-    icon: "/icons/github.svg",
-  },
-  {
-    name: "Claude",
-    icon: "/icons/claude.svg",
-  },
-  {
-    name: "Blender",
-    icon: "/icons/blender.svg",
-  },
-  {
-    name: "Figma",
-    icon: "/icons/figma.svg",
-  },
-  {
-    name: "Git",
-    icon: "/icons/git.svg",
-  },
-  {
-    name: "Python",
-    icon: "/icons/python.svg",
-  },
-  {
-    name: "Linux",
-    icon: "/icons/linux.svg",
-  },
-];
+    {
+      name: "AutoCAD",
+      icon: siAutocad,
+    },
+    {
+      name: "SketchUp",
+      icon: siSketchup,
+    },
+    {
+      name: "Revit",
+      icon: siAutodeskrevit,
+    },
+    {
+      name: "GitHub",
+      icon: siGithub,
+    },
+    {
+      name: "Claude",
+      icon: siClaude,
+    },
+    {
+      name: "Blender",
+      icon: siBlender,
+    },
+    {
+      name: "Figma",
+      icon: siFigma,
+    },
+    {
+      name: "Git",
+      icon: siGit,
+    },
+    {
+      name: "Python",
+      icon: siPython,
+    },
+    {
+      name: "Linux",
+      icon: siLinux,
+    },
+  ];
 
   return (
     <main
@@ -167,37 +195,39 @@ function App() {
 
         <div className="toolkit-marquee">
           <div className="toolkit-track">
-
-            {/* FIRST SET */}
             {toolkit.map((tool, index) => (
               <div
                 className="toolkit-card"
                 key={`${tool.name}-${index}`}
               >
-                <img
-                  src={tool.icon}
-                  alt={tool.name}
-                />
+                <div className="toolkit-icon">
+                  <ToolkitIcon
+                    icon={tool.icon}
+                    name={tool.name}
+                  />
+                </div>
 
                 <span>{tool.name}</span>
               </div>
             ))}
 
-            {/* DUPLICATE SET FOR SEAMLESS MARQUEE */}
+            {/* DUPLICATE FOR SEAMLESS MARQUEE */}
+
             {toolkit.map((tool, index) => (
               <div
                 className="toolkit-card"
                 key={`duplicate-${tool.name}-${index}`}
               >
-                <img
-                  src={tool.icon}
-                  alt={tool.name}
-                />
+                <div className="toolkit-icon">
+                  <ToolkitIcon
+                    icon={tool.icon}
+                    name={tool.name}
+                  />
+                </div>
 
                 <span>{tool.name}</span>
               </div>
             ))}
-
           </div>
         </div>
       </section>
