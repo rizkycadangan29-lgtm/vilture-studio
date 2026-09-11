@@ -2416,29 +2416,6 @@ footer {
     );
 }
 
-
-/* =====================================================
-   NODES
-===================================================== */
-
-.hero-node {
-  position: absolute;
-
-  width: 5px;
-  height: 5px;
-
-  border: 1px solid rgba(112, 221, 213, 0.75);
-
-  background: #050607;
-
-  box-shadow:
-    0 0 10px rgba(112, 221, 213, 0.45);
-
-  opacity:
-    calc(var(--hero-scroll, 0) * 1.2);
-}
-
-
 /* =====================================================
    TECHNICAL COORDINATES
 ===================================================== */
@@ -3466,28 +3443,6 @@ footer {
   --orbit-rotation: 120deg;
 }
 
-.about-orbit::after {
-  content: "";
-
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-
-  background: #70ddd5;
-
-  transform: translate(-50%,-50%);
-
-  box-shadow:
-    0 0 18px rgba(112,221,213,0.7),
-    0 0 60px rgba(112,221,213,0.2);
-}
-
 /* =====================================================
    CONTACT
 ===================================================== */
@@ -3619,4 +3574,481 @@ footer {
   transform:
     translate(-50%,-50%)
     rotate(45deg);
+}
+
+/* =====================================================
+   VILTURE STUDIO — CINEMATIC OPENING
+===================================================== */
+
+/* =====================================================
+   VILTURE STUDIO — CINEMATIC LOADING SCREEN
+===================================================== */
+
+.page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #050607;
+  color: #fff;
+
+  pointer-events: all;
+
+  animation:
+    introCurtainExit
+    1.2s
+    cubic-bezier(0.77, 0, 0.175, 1)
+    5.4s
+    forwards;
+}
+
+/* GRID */
+
+.page-intro-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85),
+    transparent 95%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85),
+    transparent 95%
+  );
+
+  opacity: 0;
+
+  animation:
+    introGridIn
+    1.1s
+    ease
+    0.05s
+    forwards;
+
+  pointer-events: none;
+}
+
+/* TOP */
+
+.page-intro-top {
+  position: absolute;
+  top: 32px;
+  left: 42px;
+  right: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.3);
+
+  opacity: 0;
+
+  animation:
+    introMetaIn
+    0.8s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.35s
+    forwards;
+}
+
+/* BOTTOM */
+
+.page-intro-bottom {
+  position: absolute;
+  left: 42px;
+  right: 42px;
+  bottom: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.22);
+
+  opacity: 0;
+
+  animation:
+    introMetaIn
+    0.8s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.55s
+    forwards;
+}
+
+/* CENTER */
+
+.page-intro-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 100%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  z-index: 5;
+}
+
+/* BRAND */
+
+.page-intro-brand {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 18px;
+
+  width: max-content;
+
+  white-space: nowrap;
+  text-align: center;
+}
+
+.page-intro-brand span,
+.page-intro-brand strong {
+  display: block;
+
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(48px, 8vw, 118px);
+  line-height: 0.9;
+  letter-spacing: -0.085em;
+  font-weight: 800;
+}
+
+/* VILTURE — FROM LEFT */
+
+.page-intro-brand span {
+  color: rgba(255, 255, 255, 0.96);
+
+  opacity: 0;
+
+  transform: translateX(-90px);
+
+  animation:
+    introVilture
+    1.35s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    0.2s
+    forwards;
+}
+
+/* STUDIO — FROM RIGHT */
+
+.page-intro-brand strong {
+  color: #050607;
+
+  -webkit-text-stroke:
+    1px rgba(255, 255, 255, 0.72);
+
+  opacity: 0;
+
+  transform: translateX(90px);
+
+  animation:
+    introStudio
+    1.35s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    0.34s
+    forwards;
+}
+
+/* PROGRESS */
+
+.page-intro-progress {
+  position: relative;
+
+  width: 72vw;
+  max-width: 1100px;
+
+  margin-top: 55px;
+
+  opacity: 0;
+
+  animation:
+    introProgressIn
+    0.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.65s
+    forwards;
+}
+
+.page-intro-progress-track {
+  position: relative;
+
+  width: 100%;
+  height: 1px;
+
+  overflow: visible;
+
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.page-intro-progress-track span {
+  display: block;
+
+  width: 0;
+  height: 1px;
+
+  background: #70ddd5;
+
+  box-shadow:
+    0 0 12px rgba(112, 221, 213, 0.7);
+
+  transition: width 0.08s linear;
+}
+
+/* PERCENTAGE FOLLOWS THE END OF THE LINE */
+
+.page-intro-progress-percent {
+  position: absolute;
+
+  top: -18px;
+
+  transform: translateX(-50%);
+
+  margin: 0;
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 400;
+
+  letter-spacing: 0.08em;
+
+  color: #70ddd5;
+
+  white-space: nowrap;
+
+  transition: left 0.08s linear;
+}
+
+/* META UNDER LINE */
+
+.page-intro-progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 12px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+  line-height: 1;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.28);
+}
+
+/* SCAN */
+
+.page-intro-scan {
+  position: absolute;
+  left: 0;
+  top: -10%;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(112, 221, 213, 0.6),
+      transparent
+    );
+
+  box-shadow:
+    0 0 25px rgba(112, 221, 213, 0.35);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation:
+    introScan
+    2s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.7s
+    forwards;
+}
+
+/* ANIMATIONS */
+
+@keyframes introGridIn {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes introMetaIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introVilture {
+  0% {
+    opacity: 0;
+    transform: translateX(-90px);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translateX(7px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes introStudio {
+  0% {
+    opacity: 0;
+    transform: translateX(90px);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translateX(-7px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes introProgressIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introScan {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  85% {
+    opacity: 0.35;
+  }
+
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+/* CURTAIN EXIT */
+
+@keyframes introCurtainExit {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+  .page-intro-top,
+  .page-intro-bottom {
+    left: 24px;
+    right: 24px;
+  }
+
+  .page-intro-top {
+    top: 24px;
+  }
+
+  .page-intro-bottom {
+    bottom: 24px;
+  }
+
+  .page-intro-center {
+    width: 100%;
+  }
+
+  .page-intro-brand {
+    gap: 10px;
+  }
+
+  .page-intro-brand span,
+  .page-intro-brand strong {
+    font-size: clamp(38px, 12vw, 72px);
+  }
+
+  .page-intro-progress {
+    width: 78vw;
+    margin-top: 40px;
+  }
 }

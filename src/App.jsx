@@ -65,6 +65,30 @@ function App() {
     };
   }, []);
 
+  const [loadingProgress, setLoadingProgress] = useState(0);
+const [loadingDone, setLoadingDone] = useState(false);
+
+useEffect(() => {
+  let progress = 0;
+
+  const interval = setInterval(() => {
+    progress += 1;
+    setLoadingProgress(progress);
+
+    if (progress >= 100) {
+      clearInterval(interval);
+
+      setTimeout(() => {
+        setLoadingDone(true);
+      }, 900);
+    }
+  }, 35);
+
+  return () => {
+    clearInterval(interval);
+  };
+}, []);
+
   /* =====================================================
    HERO SCROLL
 ===================================================== */
@@ -313,6 +337,64 @@ useEffect(() => {
       }}
     >
       <div className="noise" />
+
+      <div
+  className={`page-intro ${
+    loadingDone ? "page-intro-done" : ""
+  }`}
+  aria-hidden="true"
+>
+  <div className="page-intro-grid" />
+
+  <div className="page-intro-top">
+    <span>VILTURE / 00</span>
+    <span>2026</span>
+  </div>
+
+  <div className="page-intro-center">
+
+    <div className="page-intro-brand">
+      <span>VILTURE</span>
+      <strong>STUDIO</strong>
+    </div>
+
+    <div className="page-intro-progress">
+
+  <div className="page-intro-progress-track">
+
+    <span
+      style={{
+        width: `${loadingProgress}%`,
+      }}
+    />
+
+    <strong
+      className="page-intro-progress-percent"
+      style={{
+        left: `${loadingProgress}%`,
+      }}
+    >
+      {loadingProgress}%
+    </strong>
+
+  </div>
+
+  <div className="page-intro-progress-meta">
+    <span>INITIALIZING</span>
+    <span>VILTURE STUDIO</span>
+  </div>
+
+</div>
+
+  </div>
+
+  <div className="page-intro-bottom">
+    <span>CREATIVE / DIGITAL / VISUAL</span>
+    <span>EST. 2025</span>
+  </div>
+
+  <div className="page-intro-scan" />
+</div>
 
       {/* =====================================================
           NAVBAR
@@ -749,9 +831,6 @@ const opacity =
     <span className="work-system-line work-line-2" />
     <span className="work-system-line work-line-3" />
 
-    <span className="work-system-node work-node-1" />
-    <span className="work-system-node work-node-2" />
-    <span className="work-system-node work-node-3" />
   </div>
 
   <span className="section-number">
