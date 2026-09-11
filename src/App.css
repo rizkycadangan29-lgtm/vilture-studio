@@ -2438,26 +2438,6 @@ footer {
     calc(var(--hero-scroll, 0) * 1.2);
 }
 
-.hero-node-1 {
-  top: 35%;
-  left: 18%;
-}
-
-.hero-node-2 {
-  top: 35%;
-  right: 18%;
-}
-
-.hero-node-3 {
-  bottom: 35%;
-  left: 18%;
-}
-
-.hero-node-4 {
-  bottom: 35%;
-  right: 18%;
-}
-
 
 /* =====================================================
    TECHNICAL COORDINATES
@@ -2704,16 +2684,6 @@ footer {
     bottom: 32%;
   }
 
-  .hero-node-1,
-  .hero-node-3 {
-    left: 8%;
-  }
-
-  .hero-node-2,
-  .hero-node-4 {
-    right: 8%;
-  }
-
   .hero-coordinate {
     font-size: 6px;
   }
@@ -2841,26 +2811,6 @@ footer {
     0 0 10px rgba(112, 221, 213, 0.45);
 
   opacity: calc(var(--hero-scroll, 0) * 1.2);
-}
-
-.hero-node-1 {
-  top: 35%;
-  left: 18%;
-}
-
-.hero-node-2 {
-  top: 35%;
-  right: 18%;
-}
-
-.hero-node-3 {
-  bottom: 35%;
-  left: 18%;
-}
-
-.hero-node-4 {
-  bottom: 35%;
-  right: 18%;
 }
 
 .hero-coordinate {

@@ -415,11 +415,6 @@ useEffect(() => {
     <div className="hero-line hero-line-top" />
     <div className="hero-line hero-line-bottom" />
 
-    <div className="hero-node hero-node-1" />
-    <div className="hero-node hero-node-2" />
-    <div className="hero-node hero-node-3" />
-    <div className="hero-node hero-node-4" />
-
     <span className="hero-coordinate hero-coordinate-left">
       01 / 04
     </span>
