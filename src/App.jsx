@@ -66,28 +66,39 @@ function App() {
   }, []);
 
   const [loadingProgress, setLoadingProgress] = useState(0);
-const [loadingDone, setLoadingDone] = useState(false);
+  const [introComplete, setIntroComplete] = useState(false);
 
-useEffect(() => {
-  let progress = 0;
+  useEffect(() => {
+    let interval;
+    let revealTimeout;
 
-  const interval = setInterval(() => {
-    progress += 1;
-    setLoadingProgress(progress);
+    const startDelay = setTimeout(() => {
+      let progress = 0;
 
-    if (progress >= 100) {
-      clearInterval(interval);
+      interval = setInterval(() => {
+        progress += 1;
+        setLoadingProgress(progress);
 
-      setTimeout(() => {
-        setLoadingDone(true);
-      }, 900);
-    }
-  }, 35);
+        if (progress >= 100) {
+          clearInterval(interval);
 
-  return () => {
-    clearInterval(interval);
-  };
-}, []);
+          // Let the completed loading state breathe before the curtain opens.
+          revealTimeout = setTimeout(() => {
+            setIntroComplete(true);
+          }, 600);
+        }
+      }, 35);
+    }, 1400);
+
+    return () => {
+      clearTimeout(startDelay);
+      clearTimeout(revealTimeout);
+
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, []);
 
   /* =====================================================
    HERO SCROLL
@@ -330,7 +341,7 @@ useEffect(() => {
 
   return (
     <main
-      className="studio-page"
+      className={`studio-page ${introComplete ? "is-loaded" : ""}`}
       style={{
         "--mouse-x": `${mouse.x}%`,
         "--mouse-y": `${mouse.y}%`,
@@ -338,12 +349,7 @@ useEffect(() => {
     >
       <div className="noise" />
 
-      <div
-  className={`page-intro ${
-    loadingDone ? "page-intro-done" : ""
-  }`}
-  aria-hidden="true"
->
+      <div className={`page-intro ${introComplete ? "is-complete" : ""}`} aria-hidden="true">
   <div className="page-intro-grid" />
 
   <div className="page-intro-top">
@@ -352,40 +358,29 @@ useEffect(() => {
   </div>
 
   <div className="page-intro-center">
-
     <div className="page-intro-brand">
       <span>VILTURE</span>
       <strong>STUDIO</strong>
     </div>
 
     <div className="page-intro-progress">
+      <div className="page-intro-progress-track">
+        <span
+          style={{
+            width: `${loadingProgress}%`,
+          }}
+        />
+      </div>
 
-  <div className="page-intro-progress-track">
-
-    <span
-      style={{
-        width: `${loadingProgress}%`,
-      }}
-    />
-
-    <strong
-      className="page-intro-progress-percent"
-      style={{
-        left: `${loadingProgress}%`,
-      }}
-    >
-      {loadingProgress}%
-    </strong>
-
-  </div>
-
-  <div className="page-intro-progress-meta">
-    <span>INITIALIZING</span>
-    <span>VILTURE STUDIO</span>
-  </div>
-
-</div>
-
+      <div
+        className="page-intro-progress-percent"
+        style={{
+          left: `${loadingProgress}%`,
+        }}
+      >
+        {loadingProgress}%
+      </div>
+    </div>
   </div>
 
   <div className="page-intro-bottom">
@@ -483,49 +478,20 @@ useEffect(() => {
       </nav>
 
       <section
-  className="hero"
-  style={{
-    "--hero-scroll": heroScroll,
-  }}
->
-  <div className="hero-glow" />
+        className="hero"
+        style={{
+          "--hero-scroll": heroScroll,
+        }}
+      >
+        <div className="hero-glow" />
 
-  <div className="hero-transform" aria-hidden="true">
-    <div className="hero-frame hero-frame-left" />
-    <div className="hero-frame hero-frame-right" />
-
-    <div className="hero-line hero-line-top" />
-    <div className="hero-line hero-line-bottom" />
-
-    <span className="hero-coordinate hero-coordinate-left">
-      01 / 04
-    </span>
-
-    <span className="hero-coordinate hero-coordinate-right">
-      VLT—001
-    </span>
-  </div>
-
-  <div className="hero-content">
-    <div className="eyebrow">
-      <span className="eyebrow-dot" />
-      MADE BY RIZKY ADIANSYAH
-    </div>
-
-    <h1 className="hero-brand">
-      <span>VILTURE</span>
-      <strong>STUDIO</strong>
-    </h1>
-
-    <div className="hero-word-lines" aria-hidden="true">
-      <span />
-      <span />
-      <span />
-    </div>
-  </div>
-
-  <div className="hero-transition" aria-hidden="true" />
-</section>
+        <div className="hero-content">
+          <h1 className="hero-brand">
+            <span>VILTURE</span>
+            <strong>STUDIO</strong>
+          </h1>
+        </div>
+      </section>
 
       <section
   className={`toolkit-section ${

@@ -3796,10 +3796,10 @@ footer {
 .page-intro-progress {
   position: relative;
 
-  width: 72vw;
+  width: 55vw;
   max-width: 1100px;
 
-  margin-top: 55px;
+  margin-top: 25px;
 
   opacity: 0;
 
@@ -4050,5 +4050,111 @@ footer {
   .page-intro-progress {
     width: 78vw;
     margin-top: 40px;
+  }
+}
+
+
+/* =====================================================
+   POST-LOADING ENTRANCE — HERO
+   Loading finishes first. The Hero reveals afterwards.
+===================================================== */
+
+/* Keep the real page visually dormant behind the loading curtain. */
+.studio-page:not(.is-loaded) .navbar,
+.studio-page:not(.is-loaded) .hero,
+.studio-page:not(.is-loaded) .toolkit-section,
+.studio-page:not(.is-loaded) .experience-section,
+.studio-page:not(.is-loaded) #work,
+.studio-page:not(.is-loaded) #services,
+.studio-page:not(.is-loaded) #about,
+.studio-page:not(.is-loaded) #contact,
+.studio-page:not(.is-loaded) footer {
+  visibility: hidden;
+}
+
+/* Loading curtain stops intercepting the page once the entrance begins. */
+.page-intro.is-complete {
+  pointer-events: none;
+}
+
+/* Hero itself becomes the first visible layer. */
+.studio-page:not(.is-loaded) .hero-glow {
+  opacity: 0;
+}
+
+.studio-page.is-loaded .hero-glow {
+  animation: heroGlowEntrance 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.studio-page:not(.is-loaded) .hero-brand {
+  opacity: 0;
+}
+
+.studio-page.is-loaded .hero-brand {
+  animation: heroBrandEntrance 1.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+/* Navbar follows slightly after the wordmark. */
+.studio-page:not(.is-loaded) .navbar {
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+.studio-page.is-loaded .navbar {
+  animation: heroNavEntrance 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
+}
+
+@keyframes heroBrandEntrance {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 42px, 0) scale(0.975);
+    filter: blur(12px);
+  }
+
+  58% {
+    opacity: 1;
+    transform: translate3d(0, -4px, 0) scale(1.002);
+    filter: blur(1px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroGlowEntrance {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.72);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes heroNavEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-page.is-loaded .hero-brand,
+  .studio-page.is-loaded .hero-glow,
+  .studio-page.is-loaded .navbar {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 }
